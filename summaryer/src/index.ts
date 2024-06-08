@@ -175,6 +175,13 @@ async function summaryItems(
     } catch (e) {
       console.error("failed to summarize: ", e);
       console.error("item: ", item);
+
+      await articleService.updateSummary({
+        id: item.id!,
+        text: `failed to summarize: ${JSON.stringify(e)}`,
+        modelName,
+      });
+
       continue;
     }
     const end = Date.now();
