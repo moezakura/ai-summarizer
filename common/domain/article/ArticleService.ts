@@ -1,5 +1,6 @@
 import { type SortOrder, Types } from "mongoose";
-import { ArticleItem } from "./ArticleItemModel";
+import { ArticleItem, articleItemSchema } from "./ArticleItemModel";
+import { ArticleRead } from "./ArticleReadModel";
 
 export type Article = {
 	id?: string;
@@ -11,6 +12,7 @@ export type Article = {
 		text: string;
 	}[];
 	score: number;
+	read?: boolean;
 	meta: {
 		createdAt: Date;
 	};
@@ -85,6 +87,7 @@ export class ArticleService {
 
 	async getList(arg: {
 		limit: number;
+		userIdByRead?: string;
 		nextOffsetId?: string;
 		prevOffcetId?: string;
 		sortKey?: string;
@@ -112,14 +115,37 @@ export class ArticleService {
 			sort["_id"] = 1;
 		}
 
-		const items = await ArticleItem.find({
-			...filter,
-			...(arg.filter ?? {}),
-		})
-			.sort({
-				...sort,
+		const items = await (async () => {
+			if (arg.userIdByRead) {
+				return await ArticleItem.aggregate([
+					{
+						$match: {
+							$and: [{ ...filter }, { ...(arg.filter ?? {}) }],
+						},
+					},
+					{
+						$lookup: {
+							from: "articlereads",
+							localField: "_id",
+							foreignField: "articleId",
+							as: "read",
+						},
+					},
+				])
+					.sort({
+						...sort,
+					})
+					.limit(arg.limit);
+			}
+			return await ArticleItem.find({
+				...filter,
+				...(arg.filter ?? {}),
 			})
-			.limit(arg.limit);
+				.sort({
+					...sort,
+				})
+				.limit(arg.limit);
+		})();
 
 		return items.map<Article>((item) => ({
 			id: (item._id ?? item.id).toHexString(),
@@ -128,17 +154,33 @@ export class ArticleService {
 			content: item.content,
 			summary: item.summary ?? [],
 			score: item.score ?? 0,
+			read: !!item.read,
 			meta: {
 				createdAt: item.meta.createdAt,
 			},
 		}));
 	}
 
-	async getItem(id: string): Promise<Article | null> {
+	async getItem(id: string, userIdByRead?: string): Promise<Article | null> {
 		const item = await ArticleItem.findById(id);
 		if (!item) {
 			return null;
 		}
+
+		const read = await (async () => {
+			if (!userIdByRead) {
+				return undefined;
+			}
+			const doc = await ArticleRead.findOne({
+				articleId: id,
+				userId: userIdByRead,
+			});
+			if (!doc) {
+				return false;
+			}
+			return true;
+		})();
+
 		return {
 			id: (item._id ?? item.id).toHexString(),
 			title: item.title,
@@ -146,6 +188,7 @@ export class ArticleService {
 			content: item.content,
 			summary: item.summary ?? [],
 			score: item.score ?? 0,
+			read,
 			meta: {
 				createdAt: item.meta.createdAt,
 			},
