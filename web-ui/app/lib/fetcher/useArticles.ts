@@ -1,5 +1,5 @@
-import useSWR from "swr";
 import dayjs from "dayjs";
+import useSWR from "swr";
 import { getDiff } from "../getDiff";
 
 export type Article = {
@@ -12,6 +12,7 @@ export type Article = {
 		text: string;
 	}[];
 	createdAt: Date;
+	read?: boolean;
 	view: {
 		createdAt: string;
 		createdAtDiff: string;
@@ -33,6 +34,7 @@ type ArticleResult = {
 		modelName: string;
 		text: string;
 	}[];
+	read?: boolean;
 	meta: {
 		createdAt: Date;
 	};
@@ -67,6 +69,7 @@ async function fetcher(key: string) {
 					content: j.content,
 					summary: j.summary,
 					createdAt: new Date(j.meta.createdAt),
+					read: j.read,
 					view: {
 						createdAt: createdAt.format("YYYY-MM-DD HH:mm"),
 						createdAtDiff: diff,

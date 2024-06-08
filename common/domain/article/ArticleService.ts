@@ -129,6 +129,13 @@ export class ArticleService {
 							localField: "_id",
 							foreignField: "articleId",
 							as: "read",
+							pipeline: [
+								{
+									$match: {
+										userId: new Types.ObjectId(arg.userIdByRead),
+									},
+								},
+							],
 						},
 					},
 				])
@@ -147,18 +154,25 @@ export class ArticleService {
 				.limit(arg.limit);
 		})();
 
-		return items.map<Article>((item) => ({
-			id: (item._id ?? item.id).toHexString(),
-			title: item.title,
-			url: item.url,
-			content: item.content,
-			summary: item.summary ?? [],
-			score: item.score ?? 0,
-			read: !!item.read,
-			meta: {
-				createdAt: item.meta.createdAt,
-			},
-		}));
+		return items.map<Article>((item) => {
+			let read: boolean | undefined = undefined;
+			if (item.read && Array.isArray(item.read)) {
+				read = item.read.length > 0;
+			}
+
+			return {
+				id: (item._id ?? item.id).toHexString(),
+				title: item.title,
+				url: item.url,
+				content: item.content,
+				summary: item.summary ?? [],
+				score: item.score ?? 0,
+				read,
+				meta: {
+					createdAt: item.meta.createdAt,
+				},
+			};
+		});
 	}
 
 	async getItem(id: string, userIdByRead?: string): Promise<Article | null> {

@@ -1,3 +1,5 @@
+import { Link, useNavigate, useSearchParams } from "@remix-run/react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
 	Card,
 	CardDescription,
@@ -5,10 +7,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "~/components/ui/card";
-import { type Article, useArticles } from "~/lib/fetcher/useArticles";
-import { Link, useNavigate, useSearchParams } from "@remix-run/react";
-import { useEffect, useMemo, useRef, useState } from "react";
 import { ScrollArea } from "~/components/ui/scroll-area";
+import { type Article, useArticles } from "~/lib/fetcher/useArticles";
 
 export type ArticleListProsp = {
 	kind?: "recent" | "recommend";
@@ -163,7 +163,7 @@ export default function ArticleList(props: ArticleListProsp) {
 			<div ref={articleListDOM}>
 				{(cacheArticles ?? []).map((a: Article) => {
 					return (
-						<div key={a.id}>
+						<div key={a.id} className={a.read ? "opacity-50" : ""}>
 							<Link to={`?id=${a.id}`}>
 								<Card
 									className={`border-none rounded-none ${
