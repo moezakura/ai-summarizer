@@ -1,4 +1,4 @@
-import { model, Schema, type Types } from "mongoose";
+import mongoose, { model, Schema, type Types } from "mongoose";
 
 export interface IArticleItem {
 	id: Types.ObjectId;
@@ -29,7 +29,6 @@ export const articleItemSchema = new Schema<IArticleItem>({
 	},
 });
 
-export const ArticleItem = model<IArticleItem>(
-	"articleItem",
-	articleItemSchema,
-);
+export const ArticleItem =
+	mongoose.models.articleItem ||
+	model<IArticleItem>("articleItem", articleItemSchema);
