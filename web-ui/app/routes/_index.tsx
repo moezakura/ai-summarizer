@@ -1,14 +1,16 @@
-import type { MetaFunction } from "@remix-run/node";
-import ArticleList from "~/templates/RssList";
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { json, redirect, useSearchParams } from "@remix-run/react";
+import { useEffect, useRef, useState } from "react";
+import { authTokenCookie } from "~/authCookie";
+import { AuthService } from "~/common/domain/auth/AuthService";
 import {
 	ResizableHandle,
 	ResizablePanel,
 	ResizablePanelGroup,
 } from "~/components/ui/resizable";
-import ArticleItem from "~/templates/ArticleItem";
-import { useSearchParams } from "@remix-run/react";
 import { ScrollArea } from "~/components/ui/scroll-area";
-import { useEffect, useRef, useState } from "react";
+import ArticleItem from "~/templates/ArticleItem";
+import ArticleList from "~/templates/RssList";
 
 export const meta: MetaFunction = () => {
 	return [
@@ -16,6 +18,36 @@ export const meta: MetaFunction = () => {
 		{ name: "description", content: "Welcome to Remix!" },
 	];
 };
+
+export async function loader({ request }: LoaderFunctionArgs) {
+	const cookieHeader = request.headers.get("Cookie");
+	const cookie = (await authTokenCookie.parse(cookieHeader)) ?? "";
+
+	if (!cookie) {
+		return redirect("/login?no-cookie");
+	}
+
+	try {
+		const jwtSecret = process.env.JWT_SECRET as string;
+		const jwtExpireSecondStr = process.env.JWT_EXPIRES_IN_SECONDS as string;
+		const jwtExpireSecond = Number.parseInt(jwtExpireSecondStr, 10);
+
+		const authService = new AuthService({
+			jwtSecret,
+			expiresInSecond: jwtExpireSecond,
+		});
+		const user = await authService.getUserByAccessToken(cookie);
+
+		if (!user || !user._id) {
+			return redirect("/login?no-user");
+		}
+	} catch (e) {
+		console.error("failed to check to login", e);
+		return redirect("/login?fail");
+	}
+
+	return json({}, 200);
+}
 
 export default function Index() {
 	const [searchParams] = useSearchParams();
