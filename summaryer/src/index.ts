@@ -84,7 +84,7 @@ const llmUri = process.env.OLLAMA_BASE_URL as string;
       }
 
       const items = await getByNonSummaryItems(modelName, articleService);
-      console.log("items", items.map((i) => i.score));
+      console.log("items score", items.map((i) => i.score));
 
       // 過去のお気に入りからスコアをつける
       const scoredItems: Article[] = [];

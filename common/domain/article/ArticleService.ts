@@ -68,7 +68,7 @@ export class ArticleService {
 			},
 		});
 
-		console.log("items", items);
+		console.log("article items", items);
 
 		return items.map<Article>((item) => ({
 			id: (item._id ?? item.id).toHexString(),

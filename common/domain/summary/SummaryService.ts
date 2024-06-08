@@ -1,6 +1,4 @@
 import { ChatOllama } from "@langchain/community/chat_models/ollama";
-import { CheerioWebBaseLoader } from "@langchain/community/document_loaders/web/cheerio";
-import { MozillaReadabilityTransformer } from "@langchain/community/document_transformers/mozilla_readability";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { PromptTemplate } from "@langchain/core/prompts";
@@ -63,7 +61,7 @@ export class SummaryService {
 				chunkOverlap: 100,
 			});
 			if (!content?.content) {
-				throw new Error(`failed to get content: ${JSON.stringify(content)}`);
+				return "ページ内容を取得できませんでした";
 			}
 
 			const newDocuments = await splitter.splitText(content!.content);
