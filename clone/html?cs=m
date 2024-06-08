@@ -1,0 +1,971 @@
+<html>
+<head>
+	<meta name="robots" content="noindex">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>良かった from mox on Inoreader</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+	<style> 
+		html, body
+		{
+		    overflow-x:hidden;
+			background-color: #FEFEFE;
+			color: #1a2433;
+			font-family: 'Roboto', sans-serif;
+			font-size: 14px;
+			padding: 0;
+			margin: 0;
+		}
+
+		A:link {color:#296BCC;}
+		A:hover {color:#296BCC;}
+		A:visited {color:#296BCC;}
+
+		A.boldlink:link {font-weight: bold;}
+		A.boldlink:hover {font-weight: bold;}
+		A.boldlink:visited {font-weight: bold;}
+
+		.article_author
+		{
+			font-size:12px;
+			line-height: 1.3rem;
+			margin-bottom: 16px;
+		}
+		
+		.article_magazine_footer .article_author
+		{
+		    margin-bottom: 0;
+		}
+
+		.article_author>.au1
+		{
+			opacity: 0.6;
+			filter:alpha(opacity=60);
+		}
+
+		.logo_header
+		{
+			margin:0 0 -4px 0 !important;
+			text-align:left !important;
+		}
+		.article_content
+		{
+			line-height: 1.5;
+			margin-bottom: 30px;
+		}
+		
+		.article_content
+		{
+		    font-family: 'Merriweather', serif;
+            font-size: 16px;
+            line-height: 1.7;
+		}
+		
+		.font_roboto .article_content
+		{
+		    font-family: 'Roboto', sans-serif;
+		}
+		.feed_link
+		{
+			font-style: normal;
+			text-decoration: none;
+		}
+		.title_link:link, .title_link:active, .title_link:visited
+		{
+			text-decoration:none;
+			font-weight:bold;
+			font-size:27px;
+			line-height: 29px;
+			display: block;
+			margin-bottom: 8px;
+			color: #1a2433;
+		}
+		.title_link:hover
+		{
+		    color:#296BCC;
+		}
+		.continuation_div
+		{
+			text-align: center;
+		}
+		.continuation_div a
+		{
+		    text-decoration: none;
+		    padding: 10px 12px;
+            border-radius: 3px;
+            transition: all 0.2s ease-in;
+		}
+        .continuation_div a:hover
+        {
+            background: #f5fbff;
+        }
+
+		.enclosure_div
+		{
+			font-size:0.9em;
+		}
+		.wrapper
+		{
+			font-size: 14px;
+			margin: 0 auto;
+			width: 100%;
+			max-width:720px;
+			padding: 0;
+		}
+		.header
+		{
+			padding: 32px 0;
+			display:flex;
+			align-items: center;
+		}
+		.header_logo
+		{
+			vertical-align: bottom;
+			padding:0 15px 0 0;
+		}
+		
+		.header_logo img
+		{
+		    width:48px;
+		    min-width:48px;
+		    height:48px;
+		}
+		
+		.article_magazine_content_wraper .header_logo img
+		{
+		    width:36px;
+		    min-width:36px;
+		    height:36px;
+		}
+		
+		 .header_text
+		{
+			vertical-align: bottom;
+			font-size: 30px;
+			font-weight: bold;
+		}
+		.article_magazine_content_wraper .header_text
+		{
+			font-size: 22px;
+		}
+		.header_text span
+		{
+		    font-size: 14px;
+		    font-weight: normal;
+		    color: #828d9d;
+		    display: block;
+		    margin-top: 4px;
+		}
+		
+		.header_text span a
+		{
+		    text-decoration: none;
+		}
+		.clearfix
+		{
+			clear:both;
+		}
+		.body
+		{
+			padding: 32px 0;
+			text-align:left;
+		}
+		.divider_wrapper
+		{
+			padding-left:20px;
+			margin-top:10px;
+
+		}
+		.divider
+		{
+			margin-bottom:30px;
+			width:100%;
+			border-top:1px solid #D9DDE6;
+		}
+		pre
+		{
+			overflow:auto;
+		}
+		img{
+		    max-width: 100%;
+            height: auto;
+            width: auto; /* For IE8 */
+		}
+		figure
+		{
+			margin-left:0;
+			margin-right:0;
+		}
+
+		.plus_warn
+		{
+			margin: 10px auto 10px auto;
+			font-size: 12px;
+			line-height: 27px;
+			padding: 1px 50px 1px 50px;
+			font-weight: bold;
+			background-color: #FFF0A3;
+			width:300px;
+			text-align:center;
+		}
+
+		.article_broadcasted 
+		{
+			padding-bottom: 10px;
+			font-size: 12px;
+			line-height: 17px;
+		}
+
+		.pull_left{
+			float:left;
+		}
+
+		.clearfix
+		{
+			clear:both;
+		}
+
+		.broadcaster_pic
+		{
+			width:44px;
+			height:44px;
+			vertical-align: top;
+			margin-right: 7px;
+		}
+
+		.broadcast_bubble 
+		{
+			min-width:100px;
+			left:12px;
+			position: relative;
+			padding:14px;
+			min-height: 16px;
+			max-width: 548px;
+			font-size:14px;
+			word-wrap:break-word;
+		}
+
+		.broadcast_bubble:after 
+		{
+			content: '';
+			position: absolute;
+			top: 10px;
+			left: -12px;
+			border-style: solid;
+			border-width: 12px 12px 12px 0;
+			display: block;
+			width: 0;
+			z-index: 1;
+		}
+
+		.broadcast_bubble, .img_caption_wrapper
+		{
+			background: rgba(215, 221, 230, 0.5);
+			color: #1a2433;
+		}
+
+		.broadcast_bubble:after
+		{
+			border-color: transparent rgba(215, 221, 230, 0.5);
+		}
+		
+		/*Magazine style*/
+		
+		.article_magazine_content
+		{
+			font-size: 14px;
+            font-weight: normal;
+            line-height: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-clamp: 4;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            max-height: 76px;
+		}
+		.article_magazine_content_wraper
+		{
+			position: relative;
+			display: flex;
+			margin: 0 0 48px 0;
+		}
+		.article_magazine_picture_wrapper
+		{
+			cursor: pointer;
+			margin-right: 20px;
+		}
+		.article_magazine_picture
+		{
+			border-radius: 3px;
+			width: 222px;
+            height: 156px;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+		}
+		.article_magazine_footer 
+		{
+		    padding-top: 8px;
+		    display: flex;
+            justify-content: space-between;
+		}
+		.article_magazine_content_wraper_no_picture.article_magazine_content_wraper
+		{
+			padding-left:0px;
+		}
+		.article_magazine_title_content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+		}
+		.article_magazine_content_wraper_no_picture .article_magazine_title_content
+		{
+			min-height: 30px;
+			width:100%;
+		}
+	
+		.article_magazine_title 
+		{
+			margin-bottom: 8px;
+		}
+		.article_magazine_title_link:active, .article_magazine_title_link:link, .article_magazine_title_link:visited
+		{
+			font-size: 18px;
+            font-weight: bold;
+            max-height: 66px;
+            overflow: hidden;
+            line-height: 22px;
+            text-overflow: ellipsis;
+            color: inherit;
+            text-decoration: none;
+		}
+		
+		.article_magazine_title_link:hover
+		{
+			color: inherit;
+			text-decoration: underline;
+		}
+		
+		.article_magazine_title_author_handle
+		{
+			font-size: 14px;
+			font-weight: normal;
+			opacity: 0.6;
+		}
+
+		.article_expanded_title_author_handle
+		{
+			font-size: 16px;
+			font-weight: normal;
+			opacity: 0.6;
+			position:relative;
+			top: -2px;
+		}
+         
+         .iframe-parent 
+         {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+        }
+        
+        /* Then style the iframe to fit in the container div with full height and width */
+        .responsive-iframe 
+        {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+        }
+		
+		@media only screen and (max-width: 740px) {
+            .wrapper{
+                padding: 0 20px;
+                width: calc(100% - 40px);
+            }
+		}
+		
+		@media only screen and (max-width: 600px) {
+            .article_magazine_picture{
+                width: 180px;
+                height: 156px;
+            }
+		}
+		
+		@media only screen and (max-width: 480px) {
+            .article_magazine_content_wraper
+            {
+                display: block;
+                border-bottom: 1px solid #e0e5eb;
+                padding-bottom: 30px;
+                margin: 0 0 20px 0;
+            }
+            
+            .article_magazine_picture_wrapper
+            {
+                margin: 0;
+            }
+            
+            .article_magazine_picture
+            {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .article_magazine_title
+            {
+            margin-top: 20px;
+            }
+            
+            .article_magazine_title_link:active, .article_magazine_title_link:link, .article_magazine_title_link:visited
+            {
+                line-height: 22px;
+                font-size: 20px;
+                max-height: none;
+            }
+		}
+		
+		@media only screen and (max-width: 360px) {
+		
+            .article_magazine_content_wraper
+            {
+                padding-bottom: 20px;
+            }
+            .article_magazine_picture
+            {
+                width: 100%;
+                height: 150px;
+            }
+                
+            .article_magazine_title_link:active, .article_magazine_title_link:link, .article_magazine_title_link:visited {
+                line-height: 18px;
+                font-size: 16px;
+            }
+		}
+		
+		@media only screen and (max-width: 480px) {
+		
+		    .body
+		    {
+		        padding: 0;
+		    }
+		    .header
+		    {
+		        display: block;
+		    }
+            .header_text span
+            {
+                word-break: break-all;
+            }
+            
+            .header_text
+            {
+                margin-top: 10px;
+            }
+            
+            .article_magazine_content
+            {
+               line-height: 16px;
+            }
+         }
+		</style>
+		<link rel="alternate" type="application/json" href="http://www.inoreader.com/stream/user/1005147396/tag/%E8%89%AF%E3%81%8B%E3%81%A3%E3%81%9F/view/json" /><link rel="alternate" type="application/rss+xml" href="http://www.inoreader.com/stream/user/1005147396/tag/%E8%89%AF%E3%81%8B%E3%81%A3%E3%81%9F" />
+</head>
+<body  class= article_magazine_content_wraper>
+	<div class="wrapper">
+		
+		<div class="header">
+			<div class="header_logo">
+				<a href="https://www.inoreader.com?utm_source=html_export&utm_campaign=u1005147396&utm_medium=html_export" target="_blank"><img src="/newsletter/images/circle_icon_logo.svg"></a>
+			</div>
+			<div class="header_text">
+				良かった <span>from mox on <a href="https://www.inoreader.com?utm_source=html_export&utm_campaign=u1005147396&utm_medium=html_export" target="_blank">Inoreader</a></span>
+			</div>
+		</div>
+		<div class="body" id="snip_body">
+			
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://kledgeb.blogspot.com/2024/06/ubuntu-2404-42.html" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYnmTdyf7Wy02rR8jDAZMUaIMjhjgZmsBShxtickFQt3nbe0v34RQ6dFKbNNmWg7DpJ0R9p64h5_LxF0d1rCzoX67pa-u5Dqcos7U4qhtt6gXJX9torECS7aUJZ5Z3_NuLCbG9PWx_wwtcDzOPyD61VN0VW5eegRs6yOsVlUoEsRCSchL1a3aj8u1bYHts/w640-h398/Ubuntu%2024.04%20LTS_1.jpg')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://kledgeb.blogspot.com/2024/06/ubuntu-2404-42.html" id="at_41418368762">Ubuntu 24.04 その42 - 低遅延よりもさらに高度なリアルタイム性を提供するリアルタイムカーネル登場</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						リアルタイムカーネル登場2024年5月30日、Ubuntu 24.04 LTS でリアルタイムカーネルが登場しました。続きを読む »
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago by <span style="font-style:italic">Unknown</span></span> <span class="au1">via</span> <a class="feed_link" href="http://kledgeb.blogspot.com/" target="_blank">kledgeb</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://zenn.dev/comm_vue_nuxt/articles/8228fa18d2def6" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://res.cloudinary.com/zenn/image/upload/s--oZpCmpqa--/c_fit,g_north_west,l_text:notosansjp-medium.otf_55:%E3%80%90Report%E3%80%91v-tokyo%20Meetup%20%2320%20%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%8D%E3%81%BE%E3%81%97%E3%81%9F,w_1010,x_90,y_100/g_south_west,l_text:notosansjp-medium.otf_34:petaxa%20%7C%20%E3%81%84%E3%81%A1%E3%82%80%E3%82%89%E3%82%86%E3%81%86%E3%81%BE,x_220,y_108/bo_3px_solid_rgb:d6e3ed,g_south_west,h_90,l_fetch:aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyLzU5MTZlOWFlNjguanBlZw==,r_20,w_90,x_92,y_102/co_rgb:6e7b85,g_south_west,l_text:notosansjp-medium.otf_30:Vue%E3%83%BBNuxt%20%E6%83%85%E5%A0%B1%E3%81%8C%E9%9B%86%E3%81%BE%E3%82%8B%E5%BA%83%E5%A0%B4%20%2F%20P...,x_220,y_160/bo_4px_solid_white,g_south_west,h_50,l_fetch:aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyLzE0ZmVmZTc5MTcuanBlZw==,r_max,w_50,x_139,y_84/v1627283836/default/og-base-w1200-v2.png')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://zenn.dev/comm_vue_nuxt/articles/8228fa18d2def6" id="at_41415569296">【Report】v-tokyo Meetup #20 に参加してきました</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						はじめに 
+はじめまして、いちむらゆうまと申します。 
+Vue.js v-tokyo Meetup #20 の参加レポートを執筆していきます。 
+本レポートは各セッションのざっくりとした要約 + 私の感想で構成されています。 
+当日の雰囲気が少しでも伝われば幸いです。 
+ 
+ 簡単な自己紹介 
+私のことを少しだけ紹介させて頂きます。 
+現在大学生で、学生アルバイトとして業務アプリ開発会社でコードを書いています。 
+Vueはアルバイトで1年ほど扱ったのに加え、自分でWebアプリを開発するときに利用するというような関わり方です。 
+深いところは全然わからず、とりあえず要件に沿って動くものは作れるかなという感...
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago by <span style="font-style:italic">petaxa | いちむらゆうま</span></span> <span class="au1">via</span> <a class="feed_link" href="https://zenn.dev/topics/vue" target="_blank">Zennの「Vue.js」のフィード</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper article_magazine_content_wraper_no_picture">
+					
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://brave.com/blog/brave-search-ads-launch/" id="at_41415374265">Brave はテストフェーズの成功後、主要市場で検索広告を開始</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						Comments
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="https://news.ycombinator.com/" target="_blank">JA Hacker News</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper article_magazine_content_wraper_no_picture">
+					
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://videocardz.com/newz/ualink-standard-announced-developed-by-amd-intel-google-microsoft-and-meta-to-compete-with-nvidia-nvlink" id="at_41415035358">UALink 標準が発表されました: AMD、Intel、Google、Microsoft、Meta が NVIDIA NVLink に対抗するために開発</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						Ultra Accelerator Link (UALink) standard for data-centers The largest companies in the industry are partnering to develop an open standard.  NVIDIA NVLink is a technology that allows high-speed communication between GPUs and CPUs, surpassing existing connectivity standards which are simply not up to the task for modern high-performance accelerators....
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="http://videocardz.com/" target="_blank">JA VideoCardz.com</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper article_magazine_content_wraper_no_picture">
+					
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://deno.com/blog/v1.44" id="at_41413690782">デノ 1.44</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						Comments
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="https://news.ycombinator.com/" target="_blank">JA Hacker News</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://gihyo.jp/article/2024/05/claude-tool-use?utm_source=feed" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://gihyo.jp/assets/images/ICON/2024/2301_tool-use.png')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://gihyo.jp/article/2024/05/claude-tool-use?utm_source=feed" id="at_41412846288">Anthropic、Claudeが外部ツールやAPIと連携する「Tool use」機能を一般提供開始</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						Anthropicは2024年5月31日、同社が開発する生成AI「Claude」が外部ツールやAPIとやり取りできるようにする「Tool use」を一般提供することを発表した。
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="https://gihyo.jp/" target="_blank">gihyo.jp：総合</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper article_magazine_content_wraper_no_picture">
+					
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://wccftech.com/intel-amd-microsoft-others-team-up-for-develop-the-ualink-direct-competitor-to-nvidia-nvlink/" id="at_41410533879">Intel、AMD、Microsoftなどが協力し、NVIDIA NVLinkの直接の競合製品「UALink」を開発</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						NVIDIA's dominance of the NVLink interface faces major competition as Intel, AMD, Microsoft &amp; others have teamed up to create UALink. It Seems Like The Tech Industry Looks To Break NVIDIA's Monopoly In The Interconnect Market With UALink, Microsoft, AMD, Intel &amp; Others Onboard Well, this isn't the first time we have seen big tech giants teaming...
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago by <span style="font-style:italic">Muhammad Zuhair</span></span> <span class="au1">via</span> <a class="feed_link" href="https://wccftech.com/" target="_blank">JA Wccftech</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://engineering.mercari.com/blog/entry/20240530-ae7feb0542/" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://storage.googleapis.com/prd-engineering-asset/2024/05/bb3c72a3-1_2.png')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://engineering.mercari.com/blog/entry/20240530-ae7feb0542/" id="at_41409985219">メルカリの2024年新卒エンジニア向け研修 “DevDojo”の資料と動画をご紹介！</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						こんにちは、メルカリ Engineering Office チームの@yuki.tです。 
+メルカリでは「誰もが高い基準を志しながらお互いに成長できる組織」を目指し、メンバーが相互に学び合う仕組みや機会を大事にしています。 
+その仕組みの一つとして、社内技術研修「DevDojo」があります。 
+DevDojoでは、社内の有志によってメルカリで使用されている技術に関する研修を新卒エンジニアの入社タイミングに合わせて毎年提供しています。 
+そしてDevDojoの一部コンテンツはLearning materials Websiteで外部公開しています。 
+今年も4月に様々な研修が提供されました。このブログでは今年の研修の一部をご紹介します。 
+あらたに提供を開始したコンテンツもありますので、ぜひご覧ください。...
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="https://engineering.mercari.com/blog/feed.xml" target="_blank">メルカリエンジニアリングブログ</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://gihyo.jp/admin/clip/01/ubuntu-topics/202405/31?utm_source=feed" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://gihyo.jp/assets/images/ICON/2022/1903_ubuntu-topics.png')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://gihyo.jp/admin/clip/01/ubuntu-topics/202405/31?utm_source=feed" id="at_41409522869">Ubuntu 24.04 LTSのMilk-V Marsサポートの公式発表、.NETパッケージツールチェインのメンテナンスツール“flamenco”</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						CanonicalとMilk-Vの連名で、Milk-V Mars向けUbuntuイメージがリリースされたことが広くアナウンスされています。また、Foundation Teamの一部のエンジニアが、“flamenco”と名付けられたツールのメンテナンスを開始しています。
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="https://gihyo.jp/" target="_blank">gihyo.jp：総合</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://ascii.jp/elem/000/004/202/4202000/?rss" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://ascii.jp/img/2024/06/03/3741786/xl/534026e00f3a4079.jpg?20200122')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://ascii.jp/elem/000/004/202/4202000/?rss" id="at_41440192884">「揖保乃糸」使用。カップの冷やし手延そうめん、ヤマダイから</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						即席麺などを手掛けるヤマダイは、「手緒里庵 冷やし手延そうめん」を6月3日から全国のスーパーマッケート、ドラッグストアなどで販売。あの揖保乃糸が気軽に楽しめる！
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="http://ascii.jp/cate/1/" target="_blank">ASCII.jp － トップ</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://ascii.jp/elem/000/004/202/4202135/?rss" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://ascii.jp/img/2024/06/03/3742044/xl/402ffbe844d99c85.jpg')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://ascii.jp/elem/000/004/202/4202135/?rss" id="at_41451860384">薄くてスッキリ MSIが次世代メモリー「CAMM2」対応マザーをお披露目</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						MSIは6月4日、COMPUTEX TAIPEI 2024にて開発中のDDR5 CAMM2メモリー対応マザーボード「Z790 PROJECT ZERO PLUS (CAMM2)」をお披露目した。発売日は未定。
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="http://ascii.jp/cate/1/" target="_blank">ASCII.jp － トップ</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://ascii.jp/elem/000/004/202/4202258/?rss" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://ascii.jp/img/2024/06/04/3742415/xl/c96038ddf1cae815.png?20200122')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://ascii.jp/elem/000/004/202/4202258/?rss" id="at_41453136966">肉肉すぎる!! 丸亀製麺、復活の夏限定「鬼おろし肉ぶっかけ」はうどん界のすき焼きだった</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						頭の中が肉でいっぱいの我らの気持ちを見透かしたかのように、丸亀製麺から「肉」な限定メニューが出てきました。肉食獣のような心持ちで試食会に行ってきましたよ！
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="http://ascii.jp/cate/1/" target="_blank">ASCII.jp － トップ</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://akiba-pc.watch.impress.co.jp/docs/news/news/1595757.html" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://akiba-pc.watch.impress.co.jp/img/ah/list/1595/757/kk1.jpg')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://akiba-pc.watch.impress.co.jp/docs/news/news/1595757.html" id="at_41409243550">DeepCoolの新型水冷クーラー「MYSTIQUE」登場、第5世代ポンプ/液晶搭載ヘッド仕様</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						　2.8インチLCDを搭載したDeepCoolの水冷CPUクーラー「MYSTIQUEシリーズ」が発売。ラインアップは2製品で、ラジエーターの寸法が282×120×27mmの「MYSTIQUE 240」と、402×120×27mmの「MYSTIQUE 360」。
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="https://akiba-pc.watch.impress.co.jp/" target="_blank">AKIBA PC Hotline!</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://zenn.dev/elyza/articles/f4b302f0e4d3f2" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://res.cloudinary.com/zenn/image/upload/s--qy1GIaZK--/c_fit,g_north_west,l_text:notosansjp-medium.otf_55:ELYZA%20LLM%20for%20JP%20%28%E3%83%87%E3%83%A2%E7%89%88%29%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%A7%A3%E8%AA%AC%3A%20%281%29%2070B%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%8E%A8%E8%AB%96%E5%9F%BA%E7%9B%A4,w_1010,x_90,y_100/g_south_west,l_text:notosansjp-medium.otf_34:Takuro%20Murayama%20%28Y...,x_220,y_108/bo_3px_solid_rgb:d6e3ed,g_south_west,h_90,l_fetch:aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyL2M1ODhkZWNjYWMuanBlZw==,r_20,w_90,x_92,y_102/co_rgb:6e7b85,g_south_west,l_text:notosansjp-medium.otf_30:%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%20ELYZA,x_220,y_160/bo_4px_solid_white,g_south_west,h_50,l_fetch:aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyLzIxOWE0YWY2MzQuanBlZw==,r_max,w_50,x_139,y_84/v1627283836/default/og-base-w1200-v2.png')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://zenn.dev/elyza/articles/f4b302f0e4d3f2" id="at_41408710526">ELYZA LLM for JP (デモ版)についての解説: (1) 70Bモデルの推論基盤</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						はじめに 
+こんにちは。ELYZA のML Engineeringチームの堀江 (@eemon18)、村山 (@zakktakk)です。 
+本記事では、弊社が2024/03/11にリリースした下記のデモについて、どのように70Bという巨大なモデルをホスティングしているのかを解説します。 
+まだデモを直接触れたことがないという方はぜひ一度以下のURLからアクセスし、140GBを超えるバイナリファイルからなるモデルがどのくらい高速に動作するのかを確かめてみてください。 
+https://elyza.ai/lp/elyza-llm-for-jp 
+本記事ではまず弊社推論アーキテクチャについて説明し、...
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago by <span style="font-style:italic">Takuro Murayama (Yamazaki)</span></span> <span class="au1">via</span> <a class="feed_link" href="https://zenn.dev/" target="_blank">Zennのトレンド</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper article_magazine_content_wraper_no_picture">
+					
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://www.pcgameshardware.de/Retrospektive-Thema-214694/News/AMD-stellt-den-Athlon-64-X2-vor-Ati-zum-ersten-Mal-Crossfire-PCGH-Retro-31-Mai-749316/" id="at_41408300128">AMD が Athlon 64 X2 を発表、Ati が Crossfire を初めて発表 (PCGH Retro、5 月 31 日)</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						AMD stellt den Athlon 64 X2 vor, Ati zum ersten Mal Crossfire - das geschah am 31. Mai. Jeden Tag wagt PC Games Hardware einen Blick zurück in die noch junge, aber bewegte Geschichte des Computers.
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 1d ago</span> <span class="au1">via</span> <a class="feed_link" href="https://www.pcgameshardware.de/" target="_blank">JA - PCGameshardware: Computer, IT-Technik und Spiele - PC GAMES HARDWARE ONLINE</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://www.docker.com/blog/highlights-from-microsoft-build/" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://www.docker.com/wp-content/uploads/2024/05/2400x1260_ms-build-2024-1110x583.png')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://www.docker.com/blog/highlights-from-microsoft-build/" id="at_41406020095">Highlights from Microsoft Build: Docker’s Innovations with AI and Windows on Arm</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						Windows is back! That is my big takeaway from Microsoft Build last week. In recent years, Microsoft has focused on a broader platform that includes Windows and Linux and has adapted to the centrality of the browser in the modern world. But last week’s event was dominated by the launch of the Copilot+ PC, initially launched with Arm-based machines. We...
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 2d ago by <span style="font-style:italic">Justin Cormack</span></span> <span class="au1">via</span> <a class="feed_link" href="https://www.docker.com/" target="_blank">Docker</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper article_magazine_content_wraper_no_picture">
+					
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://thehackernews.com/2024/05/flyingyeti-exploits-winrar.html" id="at_41405973508">FlyingYeti が WinRAR の脆弱性を悪用し、ウクライナで COOKBOX マルウェアを配信</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						Cloudflare on Thursday said it took steps to disrupt a month-long phishing campaign orchestrated by a Russia-aligned threat actor called FlyingYeti targeting Ukraine. 
+"The FlyingYeti campaign capitalized on anxiety over the potential loss of access to housing and utilities by enticing targets to open malicious files via debt-themed lures," Cloudflare's...
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 2d ago by <span style="font-style:italic">author</span></span> <span class="au1">via</span> <a class="feed_link" href="https://thehackernews.com/" target="_blank">JA 2 The Hacker News</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper article_magazine_content_wraper_no_picture">
+					
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://venturebeat.com/ai/perplexity-goes-beyond-ai-search-launches-publishing-platform-pages/" id="at_41404868495">Perplexity は AI 検索を超え、出版プラットフォーム「Pages」を立ち上げる</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						In most cases, Perplexity produced the desired Pages, but what we found missing was the option to edit the content manually.
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 2d ago by <span style="font-style:italic">Shubham Sharma</span></span> <span class="au1">via</span> <a class="feed_link" href="https://venturebeat.com/feed/" target="_blank">JA VentureBeat</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper article_magazine_content_wraper_no_picture">
+					
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://www.tomshardware.com/tech-industry/semiconductors/former-sk-hynix-employee-charged-with-stealing-tech-for-huawei-chinese-national-was-arrested-at-airport" id="at_41404029090">SKハイニックスの元従業員がファーウェイの技術を盗んだ罪で起訴される — 中国国籍の人物が空港で逮捕される</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						An unidentified Chinese national who once worked for South Korea's SK hynix allegedly took more than 3,000 pages worth of proprietary technology printouts to Huawei
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 2d ago</span> <span class="au1">via</span> <a class="feed_link" href="https://www.tomshardware.com/" target="_blank">JA Tomshardware</a></div>
+                            
+					    </div>
+					</div>
+				</div>
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper">
+						<a href="https://zenn.dev/mattyamonaca/articles/f3320e0e170d80" target="_blank">
+							<div class="article_magazine_picture" style="background-image:url('https://res.cloudinary.com/zenn/image/upload/s--c769XwEP--/c_fit,g_north_west,l_text:notosansjp-medium.otf_55:%E5%85%A5%E5%8A%9B%E7%B7%9A%E7%94%BB%E3%82%92%E5%85%A8%E3%81%8F%E5%A4%89%E3%81%88%E3%81%9A%E3%81%AB%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90AI%E3%81%AB%E8%89%B2%E5%A1%97%E3%82%8A%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95,w_1010,x_90,y_100/g_south_west,l_text:notosansjp-medium.otf_37:%E6%8A%B9%E8%8C%B6%E3%82%82%E3%81%AA%E3%81%8B,x_203,y_121/g_south_west,h_90,l_fetch:aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyLzlkYTMyMDhhMTIuanBlZw==,r_max,w_90,x_87,y_95/v1627283836/default/og-base-w1200-v2.png')">
+							</div>
+						</a>
+					</div>
+					<div class="article_magazine_title_content">
+					    <div>
+                            <div class="article_magazine_title">
+                                <a class="article_magazine_title_link" target="_blank" href="https://zenn.dev/mattyamonaca/articles/f3320e0e170d80" id="at_41403262624">入力線画を全く変えずに画像生成AIに色塗りさせる方法</a>
+                            </div>
+                            
+					<div class="article_magazine_content">
+						タイトル通り、入力線画を(基本的には)1pixelも変えずに画像生成AIに色塗りをさせる方法について解説していきます。 
+ 
+ 本題に入る前に 
+そもそも画像生成AIによる色塗り（着彩）について知らない方向けに、既存技術でAIに色塗りをさせるとはどのような事を指すか？またどのような課題があるか？について一度整理します。 
+ 
+ 画像生成AIによる着彩 
+テキストから画像を生成できるという事で一躍有名になった画像生成AIですが、テキストだけでは生成したい画像を詳細に指示することが困難であるという課題を抱えていました。 
+そこで、テキストと比較してより具体的に生成したい画像を指示する方法として。Contr...
+					</div>
+						</div>
+						<div class="article_magazine_footer">
+                             <div class="article_author"><span class="au1">posted 2d ago by <span style="font-style:italic">抹茶もなか</span></span> <span class="au1">via</span> <a class="feed_link" href="https://zenn.dev/" target="_blank">Zennのトレンド</a></div>
+                            
+					    </div>
+					</div>
+				</div><div class="continuation_div"><a rel="nofollow" href="?cs=m&c=TPjcoWCWFUxs">Next 20 items &rsaquo; </a></div>
+		</div>
+	</div>
+    <script type='text/javascript'>
+    (function(){
+            var iframes = document.getElementsByTagName('iframe');
+
+            for (var i = 0; i < iframes.length; i++) {
+                var div = document.createElement('div')
+                iframes[i].classList.add('responsive-iframe')
+                iframes[i].parentNode.insertBefore(div, iframes[i])
+                div.classList.add('iframe-parent')
+                div.appendChild(iframes[i])
+            }}
+    ) ()
+
+    </script>
+</body>

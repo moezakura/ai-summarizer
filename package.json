@@ -1,0 +1,38 @@
+{
+  "name": "rss-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watcher:dev": "tsx watch ./watcher/src/index.ts",
+    "watcher:start": "tsx watch ./watcher/src/index.ts",
+    "summaryer:start": "ts-node ./summaryer/src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.11.2",
+    "@langchain/community": "^0.2.5",
+    "@langchain/core": "^0.2.5",
+    "@langchain/textsplitters": "^0.0.2",
+    "@mozilla/readability": "^0.5.0",
+    "@qdrant/js-client-rest": "^1.9.0",
+    "cheerio": "1.0.0-rc.12",
+    "hono": "^4.4.3",
+    "jsdom": "^24.1.0",
+    "mongoose": "^8.4.1",
+    "mozilla_readability": "link:@langchain/community/document_transformers/mozilla_readability",
+    "puppeteer": "^22.10.0",
+    "readability": "link:@@mozilla/readability",
+    "rss-parser": "^3.13.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^20.14.0",
+    "tsx": "^4.11.2"
+  }
+}
