@@ -25,10 +25,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			</head>
 			<body className="dark">
 				<div className="flex ">
-					<div className="h-full w-75">
+					<div className="h-full w-64">
 						<Link to="/">
 							<Button variant="ghost" className="w-full h-14 rounded-none py-2">
-								<span className="text-lg text-card-foreground">Recently</span>
+								<p className="text-lg text-card-foreground text-left block w-full">
+									Recently
+								</p>
 							</Button>
 						</Link>
 
@@ -36,14 +38,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 						<Link to="/recommend">
 							<Button variant="ghost" className="w-full h-14 rounded-none py-2">
-								<span className="text-lg text-card-foreground">
+								<p className="text-lg text-card-foreground text-left block w-full">
 									Daily recommend
-								</span>
+								</p>
 							</Button>
 						</Link>
 					</div>
 
-					<div className="border-l">{children}</div>
+					<div className="border-l flex-1 w-auto">{children}</div>
 				</div>
 				<ScrollRestoration />
 				<Scripts />

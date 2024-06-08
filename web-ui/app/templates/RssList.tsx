@@ -29,7 +29,7 @@ export default function ArticleList(props: ArticleListProsp) {
 	const [nextPageID, setNextPageID] = useState("");
 	const [prevPageID, setPrevPageID] = useState("");
 
-	const { data, isError, isLoading } = useArticles({
+	const { data, isError } = useArticles({
 		nextPageID,
 		prevPageID,
 		kind: props.kind,
