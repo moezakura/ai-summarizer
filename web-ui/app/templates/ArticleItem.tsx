@@ -1,3 +1,6 @@
+import parse from "html-react-parser";
+import { useEffect } from "react";
+import Markdown from "react-markdown";
 import {
 	Card,
 	CardContent,
@@ -5,10 +8,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "~/components/ui/card";
-import { useArticle } from "~/lib/fetcher/useArticle";
-import parse from "html-react-parser";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import Markdown from "react-markdown";
+import { useArticle } from "~/lib/fetcher/useArticle";
 
 interface Props {
 	id?: string;
@@ -16,6 +17,24 @@ interface Props {
 
 export default function ArticleItem(props: Props) {
 	const { article, isError, isLoading } = useArticle(props.id ?? "");
+
+	useEffect(() => {
+		if (!article) {
+			return;
+		}
+		// 既読であれば何もしない
+		if (article.read) {
+			return;
+		}
+		(async (articleId: string) => {
+			// 既読を付ける
+			const req = await fetch(`/api/read?id=${articleId}`, {
+				method: "PATCH",
+				body: "true",
+			});
+			await req.text();
+		})(article.id);
+	}, [article]);
 
 	if (props.id === undefined) {
 		return <div />;
