@@ -10,6 +10,7 @@ import {
 } from "~/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { useArticle } from "~/lib/fetcher/useArticle";
+import { useReads } from "~/lib/useReads";
 
 interface Props {
 	id?: string;
@@ -17,6 +18,8 @@ interface Props {
 
 export default function ArticleItem(props: Props) {
 	const { article, isError, isLoading } = useArticle(props.id ?? "");
+	const addReadCache = useReads((state) => state.addRead);
+	const readCache = useReads((state) => state.readIds);
 
 	useEffect(() => {
 		if (!article) {
@@ -33,6 +36,11 @@ export default function ArticleItem(props: Props) {
 				body: "true",
 			});
 			await req.text();
+			// readCacheに含まれていなければaddReadCacheで追加する
+			const hasCache = readCache.includes(articleId);
+			if (!hasCache) {
+				addReadCache(articleId);
+			}
 		})(article.id);
 	}, [article]);
 
