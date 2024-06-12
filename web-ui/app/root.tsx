@@ -1,3 +1,4 @@
+import type { LinksFunction } from "@remix-run/node";
 import {
 	Link,
 	Links,
@@ -7,10 +8,9 @@ import {
 	ScrollRestoration,
 	useLocation,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import { useMemo } from "react";
 import stylesheet from "~/tailwind.css?url";
 import { Button } from "./components/ui/button";
-import { useMemo } from "react";
 
 export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: stylesheet },
@@ -37,31 +37,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
 					<>{children}</>
 				) : (
 					<div className="flex">
-						<div className="h-full w-64">
-							<Link to="/">
-								<Button
-									variant="ghost"
-									className="w-full h-14 rounded-none py-2"
-								>
-									<p className="text-lg text-card-foreground text-left block w-full">
-										Recently
-									</p>
-								</Button>
-							</Link>
+						<nav className="h-full w-64">
+							<div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+								<span className="i-mdi-star-check" />
+								<span className="ml-2">AI Summarized</span>
+							</div>
 
-							<div className="w-full h-px bg-border" />
-
-							<Link to="/recommend">
-								<Button
-									variant="ghost"
-									className="w-full h-14 rounded-none py-2"
-								>
-									<p className="text-lg text-card-foreground text-left block w-full">
-										Daily recommend
-									</p>
-								</Button>
+							<Link
+								to="/"
+								className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+							>
+								<span className="i-mdi-clock-time-eight-outline" />
+								Recently
 							</Link>
-						</div>
+							<Link
+								to="/recommend"
+								className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+							>
+								<span className="i-mdi-calendar-today-outline" />
+								Daily recommend
+							</Link>
+						</nav>
 
 						<div className="border-l flex-1 w-auto">{children}</div>
 					</div>
