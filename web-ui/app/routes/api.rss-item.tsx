@@ -1,26 +1,19 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/react";
 import { authTokenCookie } from "~/authCookie";
-import { ArticleService } from "~/common/domain/article/ArticleService";
-import { AuthService } from "~/common/domain/auth/AuthService";
+import { auth } from "~/lib/hook/auth";
+import { services } from "~/lib/hook/services";
 
 export async function loader(args: LoaderFunctionArgs) {
 	const request = args.request;
+	const { articleTagService, articleService, authService } = services();
+	// ユーザーを取得する
 	const cookieHeader = request.headers.get("Cookie");
-	const cookie = (await authTokenCookie.parse(cookieHeader)) ?? "";
-	if (!cookie) {
-		return json({ message: "invalid auth token" }, { status: 401 });
-	}
-
-	const jwtSecret = process.env.JWT_SECRET as string;
-	const jwtExpireSecondStr = process.env.JWT_EXPIRES_IN_SECONDS as string;
-	const jwtExpireSecond = Number.parseInt(jwtExpireSecondStr, 10);
-
-	const authService = new AuthService({
-		jwtSecret,
-		expiresInSecond: jwtExpireSecond,
+	const { getUserByCookie } = auth({
+		authService,
+		cookie: authTokenCookie,
 	});
-	const user = await authService.getUserByAccessToken(cookie);
+	const user = await getUserByCookie(cookieHeader);
 
 	if (!user || !user._id) {
 		return json({ message: "no login" }, { status: 401 });
@@ -33,8 +26,19 @@ export async function loader(args: LoaderFunctionArgs) {
 		return json({ message: "parameter id is required" }, { status: 400 });
 	}
 
-	const articleService = new ArticleService();
 	const item = await articleService.getItem(id, user._id.toHexString());
 
-	return json(item);
+	// タグを取得する
+	const tags = await articleTagService.getArticleTags(
+		user._id.toHexString(),
+		id,
+	);
+
+	return json({
+		...item,
+		tags: tags.map((tag) => ({
+			id: tag._id.toHexString(),
+			name: tag.name,
+		})),
+	});
 }

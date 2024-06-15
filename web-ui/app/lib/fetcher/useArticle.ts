@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { getDiff } from "../getDiff";
 
 export type Article = {
@@ -29,6 +29,10 @@ type ArticleResult = {
 		text: string;
 	}[];
 	read?: boolean;
+	tags: {
+		id: string;
+		name: string;
+	}[];
 	meta: {
 		createdAt: Date;
 	};
@@ -49,6 +53,7 @@ async function fetcher(key: string) {
 				summary: j.summary,
 				createdAt: new Date(j.meta.createdAt),
 				read: j.read,
+				tags: j.tags,
 				view: {
 					createdAt: createdAt.format("YYYY-MM-DD HH:mm"),
 					createdAtDiff: diff,
@@ -58,11 +63,18 @@ async function fetcher(key: string) {
 }
 
 export const useArticle = (id: string) => {
-	const { data, error, isLoading } = useSWR(`/api/rss-item?id=${id}`, fetcher);
+	const key = `/api/rss-item?id=${id}`;
+	const { data, error, isLoading } = useSWR(key, fetcher);
+
+	const { mutate } = useSWRConfig();
+	const customMutate = async () => {
+		return await mutate(key);
+	};
 
 	return {
 		article: data,
 		isLoading,
 		isError: error,
+		mutate: customMutate,
 	};
 };
