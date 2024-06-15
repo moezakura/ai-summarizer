@@ -1,7 +1,9 @@
 import parse from "html-react-parser";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import TagManageToArticle from "~/components/article/TagManageToArticle";
+import { Badge } from "~/components/ui/badge";
+import { Button } from "~/components/ui/button";
 import {
 	Card,
 	CardContent,
@@ -88,7 +90,7 @@ export default function ArticleItem(props: Props) {
 
 	return (
 		<>
-			<Card className="border-none pb-8">
+			<Card className="border-none pb-12">
 				<CardHeader>
 					<a href={article?.url} target="_blank" rel="noreferrer">
 						<CardTitle>
@@ -157,6 +159,32 @@ export default function ArticleItem(props: Props) {
 						{parse(article?.content ?? "")}
 					</div>
 				</CardContent>
+
+				<Button
+					className="absolute left-2.5 bottom-2.5 opacity-100 disabled:opacity-100"
+					variant="secondary"
+					disabled
+				>
+					<span className="i-mdi-pan-left mr-2 text-2xl" />
+					Prev article
+					<Badge className="ml-2">
+						<span className="i-mdi-keyboard-outline mr-1" />
+						<span className="i-mdi-arrow-left" />
+					</Badge>
+				</Button>
+
+				<Button
+					className="absolute right-2.5 bottom-2.5 opacity-100 disabled:opacity-100"
+					variant="secondary"
+					disabled
+				>
+					<Badge className="mr-2">
+						<span className="i-mdi-keyboard-outline mr-1" />
+						<span className="i-mdi-arrow-right" />
+					</Badge>
+					Next article
+					<span className="i-mdi-pan-right ml-2 text-2xl" />
+				</Button>
 			</Card>
 		</>
 	);
