@@ -36,6 +36,15 @@ export default function ArticleItem(props: Props) {
 		setTagManageDialog(true);
 	});
 
+	shortcut.add("n", (e) => {
+		e.preventDefault();
+		// 新しいタブで記事のリンクを開く
+		if (!article?.url) {
+			return;
+		}
+		window.open(article.url);
+	});
+
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (!article) {
@@ -98,9 +107,19 @@ export default function ArticleItem(props: Props) {
 						</CardTitle>
 						<CardDescription className="mt-2">
 							<p className="ml-auto mr-0 text-right">{article?.url}</p>
-							<p className="ml-auto mr-0 text-right">
-								{article?.view.createdAt} ({article?.view.createdAtDiff})
-							</p>
+							<div className="flex mt-2">
+								<Button size="sm" variant="outline" className="ml-0 mr-auto">
+									Open article to new tab
+									<span className="i-mdi-open-in-new ml-1" />
+									<Badge variant="secondary" className="ml-2">
+										<span className="i-mdi-keyboard-outline mr-1" />N
+									</Badge>
+								</Button>
+
+								<p className="ml-auto mr-0 text-right">
+									{article?.view.createdAt} ({article?.view.createdAtDiff})
+								</p>
+							</div>
 						</CardDescription>
 					</a>
 				</CardHeader>
