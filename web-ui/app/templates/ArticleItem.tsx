@@ -1,6 +1,7 @@
 import parse from "html-react-parser";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Markdown from "react-markdown";
+import TagManageToArticle from "~/components/article/TagManageToArticle";
 import {
 	Card,
 	CardContent,
@@ -10,6 +11,7 @@ import {
 } from "~/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { useArticle } from "~/lib/fetcher/useArticle";
+import { useShortcuts } from "~/lib/hook/useShortcut";
 import { useReads } from "~/lib/useReads";
 
 interface Props {
@@ -17,10 +19,22 @@ interface Props {
 }
 
 export default function ArticleItem(props: Props) {
-	const { article, isError, isLoading } = useArticle(props.id ?? "");
+	const { article, isError, isLoading, mutate } = useArticle(props.id ?? "");
 	const addReadCache = useReads((state) => state.addRead);
 	const readCache = useReads((state) => state.readIds);
+	const [tagManageDialog, setTagManageDialog] = useState(false);
 
+	const shortcut = useShortcuts();
+
+	shortcut.add("t", (e) => {
+		if (tagManageDialog) {
+			return;
+		}
+		e.preventDefault();
+		setTagManageDialog(true);
+	});
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (!article) {
 			return;
@@ -42,7 +56,28 @@ export default function ArticleItem(props: Props) {
 				addReadCache(articleId);
 			}
 		})(article.id);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [article]);
+
+	const handleUpdateTags = async (newTagIds: string[]) => {
+		const submitData = new FormData();
+		// selectedTagsの中身をsubmitDataに詰める
+		let index = 0;
+		for (const id of newTagIds) {
+			submitData.append(`tags[${index}]`, id);
+			index++;
+		}
+
+		const request = await fetch(`/api/article/${article?.id}/tags`, {
+			method: "post",
+			body: submitData,
+		});
+		const response = await request.json();
+		console.log("update!", response);
+
+		setTagManageDialog(false);
+		await mutate();
+	};
 
 	if (props.id === undefined) {
 		return <div />;
@@ -53,7 +88,7 @@ export default function ArticleItem(props: Props) {
 
 	return (
 		<>
-			<Card className="border-none">
+			<Card className="border-none pb-8">
 				<CardHeader>
 					<a href={article?.url} target="_blank" rel="noreferrer">
 						<CardTitle>
@@ -67,6 +102,14 @@ export default function ArticleItem(props: Props) {
 						</CardDescription>
 					</a>
 				</CardHeader>
+
+				<TagManageToArticle
+					tagManageDialog={tagManageDialog}
+					selectedTags={article?.tags ?? []}
+					setTagManageDialog={setTagManageDialog}
+					updateTags={handleUpdateTags}
+				/>
+
 				{article?.summary ? (
 					<CardContent>
 						<Tabs defaultValue="article_aya:35b" className="w-full">
