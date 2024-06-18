@@ -18,9 +18,7 @@ COPY --from=build /app/summaryer /app/summaryer
 
 RUN apt-get update && apt-get install -y libglib2.0-dev libnss3 libdbus-1-3 libatk1.0-0 libatk-bridge2.0-0 libcups2-dev libgtk-3.0 libgbm-dev libasound2
 
-
-
-RUN pnpx puppeteer browsers install chrome
+RUN npx puppeteer browsers install chrome
 
 EXPOSE 8000
 CMD [ "pnpm", "summaryer:start" ]
